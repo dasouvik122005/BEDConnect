@@ -1,0 +1,161 @@
+RESEARCH PAPER TEMPLATE - B.Ed Program
+========================================
+
+[Your Name]
+[Course Name and Number]
+[Professor's Name]
+[Date]
+
+[TITLE OF YOUR RESEARCH PAPER]
+[Should be centered, bold, and descriptive]
+
+ABSTRACT
+--------
+[150-250 words summarizing your research question, methodology, key findings, and conclusions. Write this last.]
+
+INTRODUCTION
+------------
+[Introduction should be 1-2 pages and include:]
+
+Background and Context
+The field of education continues to evolve... [Provide context for your research topic]
+
+Statement of the Problem
+This research addresses the issue of... [Clearly state what problem you're investigating]
+
+Research Question(s)
+The primary research question guiding this study is: [State your main research question]
+Secondary questions include:
+1. [Supporting question 1]
+2. [Supporting question 2]
+
+Purpose and Significance
+The purpose of this study is to... [Explain why this research matters in education]
+
+LITERATURE REVIEW
+-----------------
+[2-4 pages reviewing relevant academic sources]
+
+Historical Context
+Previous research in this area has shown... [Review historical development of your topic]
+
+Current Research Trends
+Recent studies by [Author, Year] indicate... [Discuss current findings and theories]
+
+Gaps in Research
+Despite extensive research, there remains a need for... [Identify what your research will contribute]
+
+METHODOLOGY
+-----------
+[1-2 pages describing your research approach]
+
+Research Design
+This study employs a [qualitative/quantitative/mixed-methods] approach because...
+
+Participants/Setting
+[If applicable, describe your research participants and setting]
+
+Data Collection Methods
+Data will be collected through:
+1. [Method 1 - e.g., surveys, interviews, observations]
+2. [Method 2]
+3. [Method 3]
+
+Data Analysis
+[Describe how you will analyze your data]
+
+Limitations
+This study is limited by... [Acknowledge potential limitations]
+
+FINDINGS/RESULTS
+----------------
+[Present your research findings clearly]
+
+[Use subheadings to organize different aspects of your findings]
+
+Key Finding 1: [Heading]
+[Description and supporting evidence]
+
+Key Finding 2: [Heading]
+[Description and supporting evidence]
+
+Key Finding 3: [Heading]
+[Description and supporting evidence]
+
+DISCUSSION
+----------
+[2-3 pages interpreting your findings]
+
+Interpretation of Results
+The findings suggest that... [Explain what your results mean]
+
+Implications for Education Practice
+These results have several implications for educators:
+1. [Practical implication 1]
+2. [Practical implication 2]
+3. [Practical implication 3]
+
+Connections to Literature
+These findings support previous research by [Author, Year] who found...
+However, they contradict the work of [Author, Year] who suggested...
+
+CONCLUSION
+----------
+[1 page summarizing your work]
+
+Summary of Key Points
+This research examined... [Brief recap of your study]
+
+Contributions to the Field
+This study contributes to educational knowledge by... [Explain your contribution]
+
+Recommendations for Future Research
+Based on these findings, future research should:
+1. [Recommendation 1]
+2. [Recommendation 2]
+3. [Recommendation 3]
+
+Final Thoughts
+[Concluding statement about the significance of your work]
+
+REFERENCES
+----------
+[Use APA or MLA format as required by your instructor]
+
+Example APA Format:
+Author, A. A. (Year). Title of work. Publisher.
+
+Author, B. B. (Year). Title of article. Journal Name, Volume(Issue), page-page.
+
+Author, C. C. (Year, Month Day). Title of webpage. Website Name. URL
+
+APPENDICES
+----------
+[Include any additional materials such as:]
+- Appendix A: Survey Questions
+- Appendix B: Interview Protocol
+- Appendix C: Data Tables
+- Appendix D: Sample Materials
+
+---
+
+FORMATTING GUIDELINES:
+- Use 12-point Times New Roman font
+- Double-space throughout
+- 1-inch margins on all sides
+- Include page numbers in top right corner
+- Use APA or MLA style for citations and references
+- Typical length: 8-15 pages (excluding references and appendices)
+
+EVALUATION CRITERIA:
+Your research paper will be evaluated on:
+□ Clear thesis/research question
+□ Thorough literature review
+□ Appropriate methodology
+□ Logical organization
+□ Quality of analysis
+□ Proper citations and formatting
+□ Original thinking and insights
+□ Writing clarity and mechanics
+
+Created by B.Ed Connect - Academic Resources Hub
