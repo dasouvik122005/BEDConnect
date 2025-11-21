@@ -27,6 +27,17 @@
             text-decoration: none !important;
         }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Inter', -apple-system, sans-serif;
+            line-height: 1.6;
+        }
+
         /* Modern Rounded Header */
         #header {
             position: fixed;
@@ -87,6 +98,60 @@
         #menu {
             display: flex;
             gap: 30px;
+            align-items: center;
+        }
+
+        .option {
+            color: #64748b;
+            font-family: inherit;
+            font-weight: 500;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            font-size: 15px;
+        }
+
+        .option:hover {
+            color: #1e293b;
+            background: rgba(99, 102, 241, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Hamburger Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+            padding: 8px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .menu-toggle span {
+            width: 24px;
+            height: 2px;
+            background: #64748b;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
             align-items: center;
         }
 
@@ -430,14 +495,23 @@
             content: "👁️ ";
         }
 
-        @media screen and (max-width: 968px) {
+        /* Mobile Responsive */
+        @media (max-width: 968px) {
             #header {
+                top: 15px;
+                width: calc(100% - 30px);
                 padding: 0 20px;
-                height: 70px;
+                height: 60px;
+                border-radius: 30px;
             }
 
             #logo img {
-                height: 40px;
+                height: 32px;
+            }
+
+            .logo-text {
+                font-size: 18px;
+                margin-left: 8px;
             }
 
             .menu-toggle {
@@ -447,48 +521,37 @@
             #menu {
                 display: none;
                 position: fixed;
-                top: 70px;
-                right: -100%;
-                width: 280px;
-                height: calc(100vh - 70px);
-                background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+                top: 90px;
+                left: 15px;
+                right: 15px;
+                width: calc(100% - 30px);
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(20px);
                 flex-direction: column;
-                gap: 0;
-                padding: 30px 0;
-                box-shadow: -5px 0 25px rgba(0,0,0,0.3);
-                transition: right 0.4s ease;
-                overflow-y: auto;
-                z-index: 999;
+                border-radius: 20px;
+                padding: 20px 0;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+                border: 1px solid rgba(255, 255, 255, 0.3);
+                gap: 10px;
+                transition: all 0.4s ease;
+                transform: translateY(-20px);
+                opacity: 0;
             }
 
             #menu.active {
                 display: flex;
-                right: 0;
+                transform: translateY(0);
+                opacity: 1;
             }
 
             .option {
-                padding: 20px 30px;
-                margin: 0;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-                border-radius: 0;
-                transition: all 0.3s ease;
+                padding: 15px 25px;
+                margin: 0 20px;
+                border-radius: 15px;
+                font-size: 16px;
+                text-align: center;
             }
 
-            .option:hover {
-                background: rgba(255, 255, 255, 0.15);
-                transform: translateX(10px);
-                box-shadow: none;
-            }
-
-            .option {
-                font-size: 1.1rem;
-                font-weight: 500;
-                color: white !important;
-                text-decoration: none;
-            }
-        }
-
-        @media screen and (max-width: 768px) {
             #about-container {
                 flex-direction: column;
             }
@@ -497,11 +560,9 @@
             #about-image {
                 flex: 1;
             }
+        }
 
-            #logo img {
-                height: 40px;
-            }
-
+        @media (max-width: 768px) {
             #about-us h1 {
                 font-size: 2rem;
             }
@@ -513,6 +574,8 @@
 
             #team-section h2 {
                 font-size: 1.8rem;
+            }
+        }
             }
 
             .stat-card h2 {
