@@ -5,25 +5,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="favicon.png">
-    <title>About - BEDConnect</title>
+    <title>About - B.Ed Connect</title>
     <style>
         html,
         body {
             height: 100%;
             width: 100%;
             margin: 0;
+            scroll-behavior: smooth;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #ffffff;
         }
 
-        /* Header Section */
+        a {
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            transform: translateY(-2px);
+            text-decoration: none !important;
+        }
+
+        /* Header Section - unified across pages */
         #header {
             height: 12vh;
             width: 100%;
             background-color: rgb(255, 255, 255);
             position: fixed;
+            top: 0;
             display: flex;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            justify-content: space-around;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 20px;
             z-index: 1000;
+            overflow: visible;
         }
 
         .option {
@@ -41,23 +58,25 @@
 
         #logo {
             height: 100%;
-            margin: 5px;
-            margin-left: 2%;
+            display: flex;
+            align-items: center;
         }
 
         #logo img {
-            width: 200%;
-            height: 100%;
-            object-fit: cover;
+            height: 60px;
+            width: auto;
+            object-fit: contain;
         }
 
         #menu {
             display: flex;
-            gap: 50px;
-            margin-left: 40%;
+            gap: 25px;
             height: 100%;
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             line-height: 2;
+            align-items: center;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
 
         #btn1 p {
@@ -86,6 +105,26 @@
             text-decoration: underline;
         }
 
+        /* Hamburger Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            z-index: 1100;
+            position: relative;
+            padding: 8px;
+            margin: 0;
+        }
+
+        .menu-toggle span {
+            width: 30px;
+            height: 3px;
+            background: rgb(24, 27, 98);
+            border-radius: 3px;
+            transition: 0.3s;
+        }
+
         #about-container,
         #team-section {
             max-width: 100%;
@@ -96,154 +135,252 @@
         #about-us {
             width: 100%;
             margin-top: 5vh;
-            /* padding: 30px; */
-            /* background-color: #f5f5f5; */
+            padding: 40px 20px;
             color: #333;
-            line-height: 1.6;
-
+            line-height: 1.8;
+            background: #ffffff;
         }
 
         #about-us h1 {
-            font-family: Arial, Helvetica, sans-serif;
-            width: 50%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             text-align: center;
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             color: rgb(24, 27, 98);
-            margin-bottom: 20px;
-            /* align-items: center; */
-            margin-right: 0;
-            margin: 0%;
+            margin-bottom: 50px;
+            font-weight: 600;
         }
 
         #about-us p {
-            max-width: 800px;
-            padding: 20px;
-            margin: 0 auto;
+            max-width: 1000px;
+            padding: 0 20px;
+            margin: 20px auto;
             text-align: justify;
-            font-size: 1.3rem;
+            font-size: 1.05rem;
+            background: transparent;
+            line-height: 1.9;
+            color: #444;
+        }
+
+        #about-us p b {
+            color: rgb(24, 27, 98);
+            font-weight: 600;
         }
 
 
         #about-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 50px;
+            max-width: 1200px;
+            margin: 40px auto;
+            align-items: center;
+            padding: 0 20px;
         }
 
         #about-content {
-            flex: 2;
+            flex: 1;
+            min-width: 350px;
         }
 
         #about-image {
             flex: 1;
+            min-width: 350px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-
         #about-image img {
-            /* max-width: 200%; */
-            width: 80%;
-            /* height: 90%; */
-            border-radius: 10px;
-            /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
-            margin-right: 500px;
-            margin-left: 100px;
-            /* margin-top: 10px; */
+            width: 100%;
+            max-width: 450px;
+            height: auto;
         }
 
         /* Team Section */
         #team-section {
-
-            margin-top: 50px;
+            margin-top: 60px;
             text-align: center;
-            padding-bottom: 100px;
+            padding: 50px 20px 80px;
+            background: #ffffff;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         #team-section h2 {
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 2rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 2.2rem;
             color: rgb(24, 27, 98);
-            margin-bottom: 20px;
+            margin-bottom: 40px;
+            font-weight: 600;
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
         .team-member {
-            background-color: rgb(246, 246, 246);
-            display: inline-block;
-            margin: 20px;
+            background: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: #333;
-            box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px 20px;
+            border-radius: 12px;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+            min-height: 180px;
         }
 
         .team-member:hover {
-            transform: translateY(-10px);
-            box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .team-member img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-
-            border-color: black;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 10px;
-
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(24, 27, 98, 0.15);
+            border-color: rgb(24, 27, 98);
+            background: #ffffff;
         }
 
         .team-member h3 {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            font-size: 1.2rem;
-            color: #333;
-            margin: 5px 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1.3rem;
+            color: rgb(24, 27, 98);
+            margin: 10px 0;
+            font-weight: 600;
         }
 
         .team-member p {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            max-width: 1000px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .stat-card {
+            background: #f8f9fa;
+            padding: 35px 20px;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(24, 27, 98, 0.15);
+            border-color: rgb(24, 27, 98);
+        }
+
+        .stat-card h2 {
+            font-size: 2.8rem;
+            color: rgb(24, 27, 98);
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .stat-card p {
             font-size: 1rem;
             color: #666;
-        }
-
-        /* Social Media Buttons */
-        .social-buttons {
             margin-top: 10px;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
+            font-weight: 500;
         }
 
-        .social-buttons button {
-            padding: 15px 15px;
+        /* Mission Vision Section */
+        .mission-vision {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .mission-box, .vision-box {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 12px;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .mission-box:hover, .vision-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(24, 27, 98, 0.15);
+            border-color: rgb(24, 27, 98);
+        }
+
+        .mission-box h2, .vision-box h2 {
+            font-size: 1.8rem;
+            color: rgb(24, 27, 98);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .mission-box p, .vision-box p {
             font-size: 1rem;
-            color: #333;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: background-color 0.3s, color 0.3s;
-            position: relative;
-            background-color: #f5f5f5;
+            color: #555;
+            line-height: 1.8;
+            text-align: justify;
         }
 
-        .social-buttons button:hover {
-            background-color: rgb(24, 27, 98);
-            color: white;
-            box-shadow: #333;
+        .mission-box h2::before {
+            content: "🎯 ";
         }
 
-        .social-buttons button i {
-            display: none;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 1.5rem;
-            color: white;
+        .vision-box h2::before {
+            content: "👁️ ";
         }
 
-        .social-buttons button:hover i {
-            display: block;
-        }
+        @media screen and (max-width: 968px) {
+            .menu-toggle {
+                display: flex !important;
+            }
 
+            #menu {
+                display: none;
+                position: fixed;
+                top: 12vh;
+                right: -100%;
+                width: 280px;
+                height: calc(100vh - 12vh);
+                background: white;
+                flex-direction: column;
+                gap: 0;
+                padding: 20px 0;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+                transition: right 0.3s ease;
+                overflow-y: auto;
+                z-index: 999;
+            }
+
+            #menu.active {
+                display: flex;
+                right: 0;
+            }
+
+            .option {
+                padding: 15px 25px;
+                margin: 0;
+                border-bottom: 1px solid #eee;
+            }
+
+            .option:hover {
+                background: #f5f5f5;
+                transform: none;
+            }
+        }
 
         @media screen and (max-width: 768px) {
             #about-container {
@@ -254,6 +391,74 @@
             #about-image {
                 flex: 1;
             }
+
+            #logo img {
+                height: 40px;
+            }
+
+            #about-us h1 {
+                font-size: 2rem;
+            }
+
+            #about-us p {
+                font-size: 1rem;
+                padding: 15px;
+            }
+
+            #team-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .stat-card h2 {
+                font-size: 2rem;
+            }
+
+            .mission-box, .vision-box {
+                padding: 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #logo img {
+                height: 35px;
+            }
+
+            .option {
+                padding: 15px 18px;
+            }
+
+            .option p {
+                font-size: 0.95rem;
+            }
+
+            .about-container {
+                flex-direction: column;
+            }
+
+            #about-us h1 {
+                font-size: 1.5rem;
+            }
+
+            #about-us p {
+                font-size: 0.9rem;
+            }
+
+            .stats-section {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .stat-card h2 {
+                font-size: 1.5rem;
+            }
+
+            .mission-vision {
+                padding: 15px;
+            }
+
+            .mission-box, .vision-box {
+                padding: 15px;
+            }
         }
     </style>
 </head>
@@ -261,7 +466,7 @@
 <body>
     <!-- Header Section -->
     <div id="header">
-        <a href="index.html" id="logo"><img src="logo.png" alt="logo Image"></a>
+        <a href="index.html" id="logo"><img src="bedconnect-logo.png" alt="B.Ed Connect Logo"></a>
         <div id="menu">
             <a class="option" href="aboutus.html">
                 <p><b>About</b></p>
@@ -275,35 +480,25 @@
             <a class="option" href="notespage.html">
                 <p><b>Resources</b></p>
             </a>
-            <a id="btn1" href="signinpage.html">
-                <p><b>Student Portal</b></p>
-            </a>
+        </div>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
     </div>
 
     <div id="header2"></div>
 
-
     <!-- About Us Section -->
     <div id="about-us">
-        <h1>About BEDConnect</h1>
+        <h1>About B.Ed Connect</h1>
+        
         <div id="about-container">
             <!-- Content Section -->
             <div id="about-content">
                 <p>
-                    Welcome to <b>BEDConnect</b> - the Department of Education at JIS University, a premier institution dedicated to shaping the future of education in India. Our Bachelor of Education (B.Ed) program is designed to transform passionate individuals into skilled, reflective, and innovative educators who will lead the next generation.
-                </p>
-                <p>
-                    <b>Our Vision:</b> To be a center of excellence in teacher education, fostering critical thinking, pedagogical innovation, and inclusive educational practices that meet the evolving needs of 21st-century learners.
-                </p>
-                <p>
-                    <b>Our Mission:</b> We are committed to providing comprehensive teacher training that integrates theoretical knowledge with practical experience. Our NCTE-approved program emphasizes hands-on learning, research-driven pedagogy, and holistic development of teaching professionals.
-                </p>
-                <p>
-                    <b>Accreditation & Recognition:</b> Our B.Ed program is approved by the National Council for Teacher Education (NCTE) and affiliated with the West Bengal University of Teachers' Training, Education Planning and Administration (WBUTTEPA), ensuring that our graduates meet the highest standards of teacher education.
-                </p>
-                <p>
-                    With state-of-the-art facilities, experienced faculty members, and strong industry connections, we prepare our students for rewarding careers in schools, educational institutions, and beyond.
+                    Welcome to <b>B.Ed Connect</b> - the Department of Education at JIS University, one of the top B.Ed courses in Kolkata. The Bachelor of Education (B.Ed.) is a professional degree program that equips aspiring educators to teach at the middle level (Classes VI-VIII), secondary (Classes IX-X), and senior secondary levels (Classes XI-XII).
                 </p>
             </div>
             <!-- Image Section -->
@@ -312,27 +507,115 @@
             </div>
         </div>
 
+        <!-- Stats Section -->
+        <div class="stats-section">
+            <div class="stat-card">
+                <h2>24+</h2>
+                <p>Years of Excellence</p>
+            </div>
+            <div class="stat-card">
+                <h2>37</h2>
+                <p>Institutions in JIS Group</p>
+            </div>
+            <div class="stat-card">
+                <h2>39K+</h2>
+                <p>Students Empowered</p>
+            </div>
+            <div class="stat-card">
+                <h2>100%</h2>
+                <p>NCTE Approved</p>
+            </div>
+        </div>
+
+        <!-- Mission and Vision Section -->
+        <div class="mission-vision">
+            <div class="mission-box">
+                <h2>Our Mission</h2>
+                <p>
+                    To develop competent, committed, and compassionate teachers who can transform the educational landscape through innovative pedagogy, strong ethical values, and a deep understanding of diverse learning needs. We aim to create educators who inspire, engage, and empower the next generation.
+                </p>
+            </div>
+            <div class="vision-box">
+                <h2>Our Vision</h2>
+                <p>
+                    To be recognized as a center of excellence in teacher education, fostering a community of lifelong learners who contribute meaningfully to society. We envision producing educators who are not just teachers, but mentors, researchers, and change-makers in the field of education.
+                </p>
+            </div>
+        </div>
+
+        <!-- Detailed Information -->
+        <p>
+            JIS University offers a standout program designed to blend academic theory with practical classroom experience. We focus on giving teacher trainees hands-on exposure to modern teaching methodologies, digital tools, and innovative learning strategies. The curriculum is thoughtfully structured to instill strong ethical values, a modern outlook, and a sense of responsibility in future educators.
+        </p>
+        <p>
+            <b>Accreditation & Recognition:</b> Aligned with the guidelines of NCTE (National Council for Teacher Education) and WBUTTEPA (West Bengal University of Teachers' Training, Education Planning and Administration), the B.Ed program at JIS University includes both theoretical knowledge and practical training to ensure comprehensive skill development.
+        </p>
+        <p>
+            <b>JIS Group:</b> Part of JIS Group Educational Initiatives - the largest educational conglomerate of Eastern India with 37 Institutions, 170 programmes and 39,000 students. With over 24 years of excellence in education, JIS University ranks among the top B.Ed courses in Kolkata.
+        </p>
+        <p>
+            With state-of-the-art facilities, experienced faculty members, and strong industry connections, we prepare our students for rewarding careers in schools, educational institutions, and beyond.
+        </p>
+
         <!-- Department Highlights Section -->
         <div id="team-section">
             <h2>Why Choose Our B.Ed Program?</h2>
-            <div class="team-member">
-                <h3>🎓 NCTE Approved</h3>
-                <p>Nationally recognized program with quality assurance</p>
-            </div>
-            <div class="team-member">
-                <h3>👨‍🏫 Expert Faculty</h3>
-                <p>Learn from experienced educators and researchers</p>
-            </div>
-            <div class="team-member">
-                <h3>📚 Modern Pedagogy</h3>
-                <p>Innovative teaching methods and technology integration</p>
-            </div>
-            <div class="team-member">
-                <h3>🏫 Practical Training</h3>
-                <p>Extensive school internship and teaching practice</p>
+            <div class="highlights-grid">
+                <div class="team-member">
+                    <h3>🎓 NCTE Approved</h3>
+                    <p>Nationally recognized program with quality assurance and government approval</p>
+                </div>
+                <div class="team-member">
+                    <h3>👨‍🏫 Expert Faculty</h3>
+                    <p>Learn from experienced educators, researchers, and industry professionals</p>
+                </div>
+                <div class="team-member">
+                    <h3>📚 Modern Pedagogy</h3>
+                    <p>Innovative teaching methods, digital learning tools, and technology integration</p>
+                </div>
+                <div class="team-member">
+                    <h3>🏫 Practical Training</h3>
+                    <p>Extensive school internship, teaching practice, and real classroom experience</p>
+                </div>
+                <div class="team-member">
+                    <h3>💻 Smart Classrooms</h3>
+                    <p>State-of-the-art infrastructure with digital resources and modern facilities</p>
+                </div>
+                <div class="team-member">
+                    <h3>📖 Rich Library</h3>
+                    <p>Comprehensive collection of books, journals, and e-resources for research</p>
+                </div>
+                <div class="team-member">
+                    <h3>🌟 Career Support</h3>
+                    <p>Placement assistance, career guidance, and industry connections</p>
+                </div>
+                <div class="team-member">
+                    <h3>🎯 Holistic Development</h3>
+                    <p>Focus on personality development, communication skills, and leadership</p>
+                </div>
             </div>
         </div>
     </div>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('menu').classList.toggle('active');
+        }
+
+        document.querySelectorAll('#menu .option').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('menu').classList.remove('active');
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            const menu = document.getElementById('menu');
+            const toggle = document.querySelector('.menu-toggle');
+            if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+                menu.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 
 </html>

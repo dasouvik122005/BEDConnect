@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="favicon.png">
-    <title>Contact Us - BEDConnect</title>
+    <title>Contact Us - B.Ed Connect</title>
     <style>
         html,
         body {
@@ -16,16 +16,45 @@
             background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
         }
 
+        a {
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            transform: translateY(-2px);
+            text-decoration: none !important;
+        }
+
         /* Header Section */
         #header {
             height: 12vh;
             width: 100%;
             background-color: rgb(255, 255, 255);
             position: fixed;
+            top: 0;
             display: flex;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            justify-content: space-around;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
             z-index: 1000;
+        }
+
+        /* Header Section - unified across pages */
+        #header {
+            height: 12vh;
+            width: 100%;
+            background-color: rgb(255, 255, 255);
+            position: fixed;
+            top: 0;
+            display: flex;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 20px;
+            z-index: 1000;
+            overflow: visible;
         }
 
         .option {
@@ -43,43 +72,51 @@
 
         #logo {
             height: 100%;
-            margin: 5px;
-            margin-left: 2%;
+            display: flex;
+            align-items: center;
         }
 
         #logo img {
-            width: 200%;
-            height: 100%;
-            object-fit: cover;
+            height: 60px;
+            width: auto;
+            object-fit: contain;
         }
 
         #menu {
             display: flex;
-            gap: 50px;
-            margin-left: 40%;
+            gap: 25px;
             height: 100%;
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             line-height: 2;
+            align-items: center;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
-
-        #btn1 p {
-            color: white;
-            background-color: rgb(24, 27, 98);
-            padding: 0px 15px;
-            border-radius: 10px;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        }
-
-        #btn1:hover p {
-            background-color: rgb(40, 40, 140);
-            transform: scale(1.1);
-        }
-
         .option:hover {
             color: rgb(0, 149, 255);
             transform: scale(1.2);
             border-radius: 3px;
             text-decoration: underline;
+        }
+
+        /* Hamburger Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            z-index: 1100;
+            position: relative;
+            padding: 8px;
+            margin: 0;
+        }
+
+        .menu-toggle span {
+            width: 30px;
+            height: 3px;
+            background: rgb(24, 27, 98);
+            border-radius: 3px;
+            transition: 0.3s;
         }
 
         /* Contact Container */
@@ -243,6 +280,50 @@
             border: none;
         }
 
+        @media screen and (max-width: 968px) {
+            .menu-toggle {
+                display: flex !important;
+            }
+
+            #menu {
+                display: none;
+                position: fixed;
+                top: 12vh;
+                right: -100%;
+                width: 280px;
+                height: calc(100vh - 12vh);
+                background: white;
+                flex-direction: column;
+                gap: 0;
+                padding: 20px 0;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+                transition: right 0.3s ease;
+                overflow-y: auto;
+                margin-left: 0;
+                z-index: 999;
+            }
+
+            #menu.active {
+                display: flex;
+                right: 0;
+            }
+
+            .option {
+                padding: 15px 25px;
+                margin: 0;
+                border-bottom: 1px solid #eee;
+            }
+
+            .option:hover {
+                background: #f5f5f5;
+                transform: none;
+            }
+
+            .inquiry-form {
+                padding: 30px;
+            }
+        }
+
         @media screen and (max-width: 768px) {
             .contact-header h1 {
                 font-size: 2rem;
@@ -251,6 +332,65 @@
             .contact-grid {
                 grid-template-columns: 1fr;
             }
+
+            #menu {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+                padding: 10px 0;
+            }
+
+            .option {
+                margin-left: 0;
+            }
+
+            #logo img {
+                height: 50px;
+            }
+
+            .inquiry-form {
+                padding: 25px;
+            }
+
+            .map-section iframe {
+                height: 300px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .contact-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .contact-header p {
+                font-size: 0.95rem;
+            }
+
+            .contact-card h3 {
+                font-size: 1.2rem;
+            }
+
+            .inquiry-form {
+                padding: 20px;
+            }
+
+            .inquiry-form h2 {
+                font-size: 1.5rem;
+            }
+
+            .inquiry-form input,
+            .inquiry-form textarea {
+                padding: 10px;
+            }
+
+            .map-section iframe {
+                height: 250px;
+            }
+
+            #menu {
+                font-size: 0.9rem;
+                gap: 8px;
+            }
         }
     </style>
 </head>
@@ -258,7 +398,7 @@
 <body>
     <!-- Header Section -->
     <div id="header">
-        <a href="index.html" id="logo"><img src="logo.png" alt="logo Image"></a>
+        <a href="index.html" id="logo"><img src="bedconnect-logo.png" alt="B.Ed Connect Logo"></a>
         <div id="menu">
             <a class="option" href="aboutus.html">
                 <p><b>About</b></p>
@@ -272,9 +412,11 @@
             <a class="option" href="notespage.html">
                 <p><b>Resources</b></p>
             </a>
-            <a id="btn1" href="signinpage.html">
-                <p><b>Student Portal</b></p>
-            </a>
+        </div>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
     </div>
 
@@ -284,7 +426,7 @@
     <div class="contact-container">
         <div class="contact-header">
             <h1>Contact Us</h1>
-            <p>Get in touch with BEDConnect</p>
+            <p>Get in touch with B.Ed Connect</p>
         </div>
 
         <!-- Contact Cards -->
@@ -304,35 +446,34 @@
                 <h2><span class="icon">📞</span> Call Us</h2>
                 <div class="contact-info">
                     <p><strong>Department Office:</strong></p>
-                    <p>+91-33-2584-XXXX</p>
-                    <p><strong>HOD Office:</strong></p>
-                    <p>+91-98300-XXXXX</p>
+                    <p>+91 33 2563 6677</p>
                     <p><strong>Admission Helpline:</strong></p>
-                    <p>1800-XXX-XXXX (Toll Free)</p>
+                    <p>+91 8697743361 / +91 8697743362</p>
+                    <p>+91 90733 22509 / +91 92309 13790</p>
                 </div>
             </div>
 
             <div class="contact-card">
                 <h2><span class="icon">✉️</span> Email Us</h2>
                 <div class="contact-info">
-                    <p><strong>General Inquiries:</strong></p>
+                    <p><strong>Admission Inquiries:</strong></p>
+                    <p>admissions@jisuniversity.ac.in</p>
+                    <p><strong>General Information:</strong></p>
+                    <p>info@jisuniversity.ac.in</p>
+                    <p><strong>B.Ed Department:</strong></p>
                     <p>education@jisuniversity.ac.in</p>
-                    <p><strong>Admissions:</strong></p>
-                    <p>admissions.bed@jisuniversity.ac.in</p>
-                    <p><strong>Academic Queries:</strong></p>
-                    <p>academic.bed@jisuniversity.ac.in</p>
                 </div>
             </div>
 
             <div class="contact-card">
                 <h2><span class="icon">🕒</span> Office Hours</h2>
                 <div class="contact-info">
-                    <p><strong>Monday - Friday:</strong></p>
+                    <p><strong>Monday - Saturday:</strong></p>
                     <p>9:00 AM - 5:00 PM</p>
-                    <p><strong>Saturday:</strong></p>
-                    <p>9:00 AM - 1:00 PM</p>
                     <p><strong>Sunday:</strong></p>
                     <p>Closed</p>
+                    <p><strong>&nbsp;</strong></p>
+                    <p>&nbsp;</p>
                 </div>
             </div>
         </div>
@@ -387,6 +528,26 @@
             </iframe>
         </div>
     </div>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('menu').classList.toggle('active');
+        }
+
+        document.querySelectorAll('#menu .option').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('menu').classList.remove('active');
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            const menu = document.getElementById('menu');
+            const toggle = document.querySelector('.menu-toggle');
+            if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+                menu.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 
 </html>

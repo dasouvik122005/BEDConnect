@@ -5,61 +5,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="favicon.png">
-    <title>Courses - BEDConnect</title>
+    <title>Courses - B.Ed Connect</title>
     <style>
         html,
         body {
             height: 100%;
-            width: 100%;
             margin: 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
         }
 
-        /* Header Section */
+        a {
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            transform: translateY(-2px);
+            text-decoration: none !important;
+        }
+        
+        /* Header Section - unified across pages */
         #header {
             height: 12vh;
             width: 100%;
             background-color: rgb(255, 255, 255);
             position: fixed;
+            top: 0;
             display: flex;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            justify-content: space-around;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 60px 6px 20px;
             z-index: 1000;
+            overflow: visible;
         }
 
         .option {
-            color: rgb(20, 20, 136);
-            margin-left: 15px;
-            text-align: right;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        }
+                color: rgb(20, 20, 136);
+                margin-left: 15px;
+                text-align: right;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            }
 
-        #header2 {
-            height: 10vh;
-            width: 100%;
-            background-color: transparent;
-        }
+            #header2 {
+                height: 10vh;
+                width: 100%;
+                background-color: transparent;
+            }
 
-        #logo {
-            height: 100%;
-            margin: 5px;
-            margin-left: 2%;
-        }
+            #logo {
+                height: 100%;
+                display: flex;
+                align-items: center;
+            }
 
-        #logo img {
-            width: 200%;
-            height: 100%;
-            object-fit: cover;
-        }
+            #logo img {
+                height: 60px;
+                width: auto;
+                object-fit: contain;
+            }
 
-        #menu {
-            display: flex;
-            gap: 50px;
-            margin-left: 40%;
-            height: 100%;
-            font-size: 1.3rem;
-            line-height: 2;
-        }
+            #menu {
+                display: flex;
+                gap: 18px;
+                height: 100%;
+                font-size: 1.1rem;
+                line-height: 2;
+                align-items: center;
+                white-space: nowrap;
+                flex-shrink: 0;
+                margin-right: 20px;
+            }
 
         #btn1 p {
             color: white;
@@ -76,9 +93,28 @@
 
         .option:hover {
             color: rgb(0, 149, 255);
-            transform: scale(1.2);
+            transform: scale(1.1);
             border-radius: 3px;
-            text-decoration: underline;
+        }
+
+        /* Hamburger Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            z-index: 1100;
+            position: relative;
+            padding: 8px;
+            margin: 0;
+        }
+
+        .menu-toggle span {
+            width: 30px;
+            height: 3px;
+            background: rgb(24, 27, 98);
+            border-radius: 3px;
+            transition: 0.3s;
         }
 
         /* Courses Container */
@@ -90,21 +126,29 @@
 
         .courses-header {
             text-align: center;
-            color: white;
             margin-bottom: 50px;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            color: white;
         }
 
         .courses-header h1 {
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: 'Georgia', 'Times New Roman', Times, serif;
             font-size: 3.5rem;
             margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            color: white;
+            font-weight: 700;
         }
 
         .courses-header p {
             font-size: 1.3rem;
             max-width: 800px;
             margin: 0 auto;
+            color: white;
+            line-height: 1.6;
+            font-weight: 400;
         }
 
         /* Program Overview */
@@ -301,7 +345,76 @@
             margin-bottom: 10px;
         }
 
+        @media screen and (max-width: 968px) {
+            .menu-toggle {
+                display: flex !important;
+            }
+
+            #menu {
+                display: none;
+                position: fixed;
+                top: 12vh;
+                right: -100%;
+                width: 280px;
+                height: calc(100vh - 12vh);
+                background: white;
+                flex-direction: column;
+                gap: 0;
+                padding: 20px 0;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+                transition: right 0.3s ease;
+                overflow-y: auto;
+                z-index: 999;
+            }
+
+            #menu.active {
+                display: flex;
+                right: 0;
+            }
+
+            .option {
+                padding: 15px 25px;
+                margin: 0;
+                border-bottom: 1px solid #eee;
+            }
+
+            .option:hover {
+                background: #f5f5f5;
+                transform: none;
+            }
+
+            .program-details {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media screen and (max-width: 768px) {
+            #header {
+                height: 55px;
+                padding: 0 12px;
+            }
+
+            #logo {
+                margin: 0;
+            }
+
+            #logo img {
+                height: 40px;
+            }
+
+            #menu {
+                top: 55px;
+                height: calc(100vh - 55px);
+            }
+
+            .option {
+                padding: 18px 25px;
+            }
+
+            .option p {
+                font-size: 1.05rem;
+            }
+
             .courses-header h1 {
                 font-size: 2rem;
             }
@@ -313,13 +426,58 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        @media screen and (max-width: 480px) {
+            #header {
+                height: 50px;
+                padding: 0 10px;
+            }
+
+            #logo img {
+                height: 35px;
+            }
+
+            #menu {
+                top: 50px;
+                height: calc(100vh - 50px);
+            }
+
+            .option {
+                padding: 15px 20px;
+            }
+
+            .option p {
+                font-size: 1rem;
+            }
+
+            .courses-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .courses-header p {
+                font-size: 0.95rem;
+            }
+
+            .semester-section h2 {
+                font-size: 1.3rem;
+            }
+
+            .course-card h3 {
+                font-size: 1.1rem;
+            }
+
+            .eligibility-card,
+            .career-card {
+                padding: 15px;
+            }
+        }
     </style>
 </head>
 
 <body>
     <!-- Header Section -->
     <div id="header">
-        <a href="index.html" id="logo"><img src="logo.png" alt="logo Image"></a>
+        <a href="index.html" id="logo"><img src="bedconnect-logo.png" alt="B.Ed Connect Logo"></a>
         <div id="menu">
             <a class="option" href="aboutus.html">
                 <p><b>About</b></p>
@@ -333,10 +491,13 @@
             <a class="option" href="notespage.html">
                 <p><b>Resources</b></p>
             </a>
-            <a id="btn1" href="signinpage.html">
-                <p><b>Student Portal</b></p>
-            </a>
         </div>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
     </div>
 
     <div id="header2"></div>
@@ -353,7 +514,9 @@
             <h2>Program Overview</h2>
             <p style="text-align: center; color: #666; font-size: 1.1rem; margin-bottom: 30px;">
                 The B.Ed program at JIS University is a two-year full-time course approved by NCTE and affiliated with WBUTTEPA. 
-                It prepares graduates to become competent teachers for secondary and senior secondary schools.
+                This professional degree program equips aspiring educators to teach at the middle level (Classes VI-VIII), 
+                secondary (Classes IX-X), and senior secondary levels (Classes XI-XII). With the rise of new schools every year, 
+                the demand for trained, competent teachers is growing rapidly.
             </p>
             <div class="program-details">
                 <div class="detail-card">
@@ -593,6 +756,26 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('menu').classList.toggle('active');
+        }
+
+        document.querySelectorAll('#menu .option').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('menu').classList.remove('active');
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            const menu = document.getElementById('menu');
+            const toggle = document.querySelector('.menu-toggle');
+            if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+                menu.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 
 </html>
