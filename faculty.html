@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <title>Faculty - BEDConnect</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        /* Header Section */
+        #header {
+            height: 12vh;
+            width: 100%;
+            background-color: rgb(255, 255, 255);
+            position: fixed;
+            display: flex;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            justify-content: space-around;
+            z-index: 1000;
+        }
+
+        .option {
+            color: rgb(20, 20, 136);
+            margin-left: 15px;
+            text-align: right;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        #header2 {
+            height: 10vh;
+            width: 100%;
+            background-color: transparent;
+        }
+
+        #logo {
+            height: 100%;
+            margin: 5px;
+            margin-left: 2%;
+        }
+
+        #logo img {
+            width: 200%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #menu {
+            display: flex;
+            gap: 50px;
+            margin-left: 40%;
+            height: 100%;
+            font-size: 1.3rem;
+            line-height: 2;
+        }
+
+        #btn1 p {
+            color: white;
+            background-color: rgb(24, 27, 98);
+            padding: 0px 15px;
+            border-radius: 10px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        #btn1:hover p {
+            background-color: rgb(40, 40, 140);
+            transform: scale(1.1);
+        }
+
+        #btn2 p {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        .option:hover {
+            color: rgb(0, 149, 255);
+            transform: scale(1.2);
+            border-radius: 3px;
+            text-decoration: underline;
+        }
+
+        /* Faculty Section */
+        .faculty-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .faculty-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .faculty-header h1 {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 3rem;
+            color: rgb(24, 27, 98);
+            margin-bottom: 10px;
+        }
+
+        .faculty-header p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Department Head Section */
+        .department-head {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .head-image {
+            flex-shrink: 0;
+        }
+
+        .head-image img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid rgb(24, 27, 98);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .head-info {
+            flex: 1;
+        }
+
+        .head-info h2 {
+            font-size: 2.5rem;
+            color: rgb(24, 27, 98);
+            margin-bottom: 10px;
+        }
+
+        .head-info .designation {
+            font-size: 1.5rem;
+            color: #e74c3c;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .head-info .qualifications {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .head-info .specialization {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .head-info .contact-info {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .head-info .contact-info p {
+            margin: 5px 0;
+            color: #333;
+        }
+
+        /* Faculty Grid */
+        .faculty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .faculty-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .faculty-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .faculty-card img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 4px solid rgb(24, 27, 98);
+        }
+
+        .faculty-card h3 {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 1.5rem;
+            color: rgb(24, 27, 98);
+            margin: 10px 0;
+        }
+
+        .faculty-card .designation {
+            font-size: 1.1rem;
+            color: #e74c3c;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .faculty-card .qualification {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .faculty-card .specialization {
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .faculty-card .email {
+            font-size: 0.85rem;
+            color: #007bff;
+            margin-top: 10px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: rgb(24, 27, 98);
+            margin: 50px 0 30px 0;
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        @media screen and (max-width: 768px) {
+            .department-head {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .faculty-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .faculty-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <div id="header">
+        <a href="index.html" id="logo"><img src="logo.png" alt="logo Image"></a>
+        <div id="menu">
+            <a class="option" href="aboutus.html">
+                <p><b>About</b></p>
+            </a>
+            <a class="option" href="faculty.html">
+                <p><b>Faculty</b></p>
+            </a>
+            <a class="option" href="courses.html">
+                <p><b>Courses</b></p>
+            </a>
+            <a class="option" href="notespage.html">
+                <p><b>Resources</b></p>
+            </a>
+            <a id="btn1" href="signinpage.html">
+                <p><b>Student Portal</b></p>
+            </a>
+        </div>
+    </div>
+
+    <div id="header2"></div>
+
+    <!-- Faculty Container -->
+    <div class="faculty-container">
+        <div class="faculty-header">
+            <h1>Our Distinguished Faculty</h1>
+            <p>Meet our team of experienced educators and researchers committed to excellence in teacher education</p>
+        </div>
+
+        <!-- Department Head -->
+        <div class="department-head">
+            <div class="head-image">
+                <img src="https://via.placeholder.com/250" alt="HOD Photo">
+            </div>
+            <div class="head-info">
+                <h2>Dr. Ananya Mukherjee</h2>
+                <p class="designation">Head of Department - Education</p>
+                <p class="qualifications"><strong>Qualifications:</strong> Ph.D. in Education, M.Ed., M.A. in Psychology</p>
+                <p class="specialization">
+                    <strong>Areas of Expertise:</strong> Educational Psychology, Curriculum Development, 
+                    Teacher Training Methodology, ICT in Education, Inclusive Education
+                </p>
+                <p><strong>Experience:</strong> 18+ years in Teacher Education</p>
+                <div class="contact-info">
+                    <p><strong>📧 Email:</strong> ananya.mukherjee@jisuniversity.ac.in</p>
+                    <p><strong>📞 Phone:</strong> +91-98300-XXXXX</p>
+                    <p><strong>🏢 Office:</strong> Department of Education, Room 301</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Associate Professors -->
+        <h2 class="section-title">Associate Professors</h2>
+        <div class="faculty-grid">
+            <div class="faculty-card">
+                <img src="https://via.placeholder.com/180" alt="Faculty Photo">
+                <h3>Dr. Rajesh Kumar Sharma</h3>
+                <p class="designation">Associate Professor</p>
+                <p class="qualification">Ph.D. in Educational Technology, M.Ed., B.Ed.</p>
+                <p class="specialization">Educational Technology, E-Learning, Digital Pedagogy</p>
+                <p><strong>Experience:</strong> 15 years</p>
+                <p class="email">rajesh.sharma@jisuniversity.ac.in</p>
+            </div>
+
+            <div class="faculty-card">
+                <img src="https://via.placeholder.com/180" alt="Faculty Photo">
+                <h3>Dr. Priya Sen</h3>
+                <p class="designation">Associate Professor</p>
+                <p class="qualification">Ph.D. in Philosophy of Education, M.A., M.Ed.</p>
+                <p class="specialization">Philosophy of Education, Educational Research Methods</p>
+                <p><strong>Experience:</strong> 14 years</p>
+                <p class="email">priya.sen@jisuniversity.ac.in</p>
+            </div>
+
+            <div class="faculty-card">
+                <img src="https://via.placeholder.com/180" alt="Faculty Photo">
+                <h3>Dr. Subhash Chandra Das</h3>
+                <p class="designation">Associate Professor</p>
+                <p class="qualification">Ph.D. in Science Education, M.Sc., M.Ed.</p>
+                <p class="specialization">Science Education, Pedagogy of Science, STEM Education</p>
+                <p><strong>Experience:</strong> 12 years</p>
+                <p class="email">subhash.das@jisuniversity.ac.in</p>
+            </div>
+        </div>
+
+        <!-- Assistant Professors -->
+        <h2 class="section-title">Assistant Professors</h2>
+        <div class="faculty-grid">
+            <div class="faculty-card">
+                <img src="https://via.placeholder.com/180" alt="Faculty Photo">
+                <h3>Ms. Sneha Banerjee</h3>
+                <p class="designation">Assistant Professor</p>
+                <p class="qualification">M.Phil. in Education, M.Ed., B.A.</p>
+                <p class="specialization">Childhood and Growing Up, Educational Psychology</p>
+                <p><strong>Experience:</strong> 8 years</p>
+                <p class="email">sneha.banerjee@jisuniversity.ac.in</p>
+            </div>
+
+            <div class="faculty-card">
+                <img src="https://via.placeholder.com/180" alt="Faculty Photo">
+                <h3>Mr. Amit Ghosh</h3>
+                <p class="designation">Assistant Professor</p>
+                <p class="qualification">M.Ed., M.A. in English, B.Ed.</p>
+                <p class="specialization">Language Across Curriculum, English Language Teaching</p>
+                <p><strong>Experience:</strong> 7 years</p>
+                <p class="email">amit.ghosh@jisuniversity.ac.in</p>
+            </div>
+
+            <div class="faculty-card">
+                <img src="https://via.placeholder.com/180" alt="Faculty Photo">
+                <h3>Dr. Moumita Chakraborty</h3>
+                <p class="designation">Assistant Professor</p>
+                <p class="qualification">Ph.D. in Mathematics Education, M.Sc., M.Ed.</p>
+                <p class="specialization">Mathematics Pedagogy, Assessment & Evaluation</p>
+                <p><strong>Experience:</strong> 9 years</p>
+                <p class="email">moumita.chakraborty@jisuniversity.ac.in</p>
+            </div>
+
+            <div class="faculty-card">
+                <img src="https://via.placeholder.com/180" alt="Faculty Photo">
+                <h3>Ms. Ritu Sharma</h3>
+                <p class="designation">Assistant Professor</p>
+                <p class="qualification">M.Ed., M.A. in Sociology, B.Ed.</p>
+                <p class="specialization">School & Society, Sociology of Education</p>
+                <p><strong>Experience:</strong> 6 years</p>
+                <p class="email">ritu.sharma@jisuniversity.ac.in</p>
+            </div>
+
+            <div class="faculty-card">
+                <img src="https://via.placeholder.com/180" alt="Faculty Photo">
+                <h3>Mr. Debashis Mondal</h3>
+                <p class="designation">Assistant Professor</p>
+                <p class="qualification">M.Ed., M.A. in History, B.Ed.</p>
+                <p class="specialization">Pedagogy of Social Sciences, Educational Administration</p>
+                <p><strong>Experience:</strong> 7 years</p>
+                <p class="email">debashis.mondal@jisuniversity.ac.in</p>
+            </div>
+
+            <div class="faculty-card">
+                <img src="https://via.placeholder.com/180" alt="Faculty Photo">
+                <h3>Ms. Ankita Roy</h3>
+                <p class="designation">Assistant Professor</p>
+                <p class="qualification">M.Ed., M.A. in Psychology, B.Ed.</p>
+                <p class="specialization">Guidance & Counseling, Special Education</p>
+                <p><strong>Experience:</strong> 5 years</p>
+                <p class="email">ankita.roy@jisuniversity.ac.in</p>
+            </div>
+        </div>
+
+        <!-- Visiting Faculty & Guest Lecturers -->
+        <h2 class="section-title">Visiting Faculty & Guest Lecturers</h2>
+        <div class="faculty-grid">
+            <div class="faculty-card">
+                <img src="https://via.placeholder.com/180" alt="Faculty Photo">
+                <h3>Prof. Indrani Bose</h3>
+                <p class="designation">Visiting Professor</p>
+                <p class="qualification">Ph.D., Former Principal, Teacher Training College</p>
+                <p class="specialization">Educational Leadership, Teacher Professional Development</p>
+                <p class="email">Visiting Faculty</p>
+            </div>
+
+            <div class="faculty-card">
+                <img src="https://via.placeholder.com/180" alt="Faculty Photo">
+                <h3>Mr. Soumya Dutta</h3>
+                <p class="designation">Guest Lecturer</p>
+                <p class="qualification">M.Ed., School Principal</p>
+                <p class="specialization">School Management, Educational Policy</p>
+                <p class="email">Guest Lecturer</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <title>Courses - BEDConnect</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        /* Header Section */
+        #header {
+            height: 12vh;
+            width: 100%;
+            background-color: rgb(255, 255, 255);
+            position: fixed;
+            display: flex;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            justify-content: space-around;
+            z-index: 1000;
+        }
+
+        .option {
+            color: rgb(20, 20, 136);
+            margin-left: 15px;
+            text-align: right;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        #header2 {
+            height: 10vh;
+            width: 100%;
+            background-color: transparent;
+        }
+
+        #logo {
+            height: 100%;
+            margin: 5px;
+            margin-left: 2%;
+        }
+
+        #logo img {
+            width: 200%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #menu {
+            display: flex;
+            gap: 50px;
+            margin-left: 40%;
+            height: 100%;
+            font-size: 1.3rem;
+            line-height: 2;
+        }
+
+        #btn1 p {
+            color: white;
+            background-color: rgb(24, 27, 98);
+            padding: 0px 15px;
+            border-radius: 10px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        #btn1:hover p {
+            background-color: rgb(40, 40, 140);
+            transform: scale(1.1);
+        }
+
+        .option:hover {
+            color: rgb(0, 149, 255);
+            transform: scale(1.2);
+            border-radius: 3px;
+            text-decoration: underline;
+        }
+
+        /* Courses Container */
+        .courses-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .courses-header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+
+        .courses-header h1 {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .courses-header p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Program Overview */
+        .program-overview {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .program-overview h2 {
+            font-size: 2.5rem;
+            color: rgb(24, 27, 98);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .program-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .detail-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .detail-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .detail-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .detail-card p {
+            font-size: 1.1rem;
+        }
+
+        /* Course Structure */
+        .course-structure {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .course-structure h2 {
+            font-size: 2.5rem;
+            color: rgb(24, 27, 98);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .semester {
+            margin-bottom: 40px;
+        }
+
+        .semester h3 {
+            font-size: 2rem;
+            color: #764ba2;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #764ba2;
+        }
+
+        .course-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+        }
+
+        .course-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .course-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .course-item h4 {
+            color: rgb(24, 27, 98);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .course-item .course-code {
+            color: #e74c3c;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .course-item .credits {
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .course-item p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Eligibility & Admission */
+        .admission-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .admission-card {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .admission-card h2 {
+            font-size: 2rem;
+            color: rgb(24, 27, 98);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .admission-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .admission-card ul li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            color: #555;
+            font-size: 1.1rem;
+        }
+
+        .admission-card ul li:before {
+            content: "✓ ";
+            color: #27ae60;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* Career Prospects */
+        .career-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .career-section h2 {
+            font-size: 2.5rem;
+            color: rgb(24, 27, 98);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .career-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .career-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .career-card:hover {
+            transform: scale(1.05);
+        }
+
+        .career-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .courses-header h1 {
+                font-size: 2rem;
+            }
+
+            .program-details,
+            .course-list,
+            .admission-section,
+            .career-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <div id="header">
+        <a href="index.html" id="logo"><img src="logo.png" alt="logo Image"></a>
+        <div id="menu">
+            <a class="option" href="aboutus.html">
+                <p><b>About</b></p>
+            </a>
+            <a class="option" href="faculty.html">
+                <p><b>Faculty</b></p>
+            </a>
+            <a class="option" href="courses.html">
+                <p><b>Courses</b></p>
+            </a>
+            <a class="option" href="notespage.html">
+                <p><b>Resources</b></p>
+            </a>
+            <a id="btn1" href="signinpage.html">
+                <p><b>Student Portal</b></p>
+            </a>
+        </div>
+    </div>
+
+    <div id="header2"></div>
+
+    <!-- Courses Container -->
+    <div class="courses-container">
+        <div class="courses-header">
+            <h1>Bachelor of Education (B.Ed)</h1>
+            <p>A comprehensive two-year teacher training program designed to develop skilled and reflective educators</p>
+        </div>
+
+        <!-- Program Overview -->
+        <div class="program-overview">
+            <h2>Program Overview</h2>
+            <p style="text-align: center; color: #666; font-size: 1.1rem; margin-bottom: 30px;">
+                The B.Ed program at JIS University is a two-year full-time course approved by NCTE and affiliated with WBUTTEPA. 
+                It prepares graduates to become competent teachers for secondary and senior secondary schools.
+            </p>
+            <div class="program-details">
+                <div class="detail-card">
+                    <h3>⏱️ Duration</h3>
+                    <p>2 Years (4 Semesters)</p>
+                </div>
+                <div class="detail-card">
+                    <h3>🎓 Degree</h3>
+                    <p>Bachelor of Education</p>
+                </div>
+                <div class="detail-card">
+                    <h3>📚 Total Credits</h3>
+                    <p>96 Credits</p>
+                </div>
+                <div class="detail-card">
+                    <h3>✅ Accreditation</h3>
+                    <p>NCTE Approved</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Course Structure -->
+        <div class="course-structure">
+            <h2>Course Structure & Syllabus</h2>
+
+            <!-- Semester 1 -->
+            <div class="semester">
+                <h3>Semester I</h3>
+                <div class="course-list">
+                    <div class="course-item">
+                        <h4>Childhood and Growing Up</h4>
+                        <p class="course-code">Course Code: EDU-101</p>
+                        <p class="credits">Credits: 4</p>
+                        <p>Understanding child development, adolescence, and factors affecting growth.</p>
+                    </div>
+                    <div class="course-item">
+                        <h4>Contemporary India and Education</h4>
+                        <p class="course-code">Course Code: EDU-102</p>
+                        <p class="credits">Credits: 4</p>
+                        <p>Educational perspectives in the context of Indian society and democracy.</p>
+                    </div>
+                    <div class="course-item">
+                        <h4>Language Across the Curriculum</h4>
+                        <p class="course-code">Course Code: EDU-103</p>
+                        <p class="credits">Credits: 4</p>
+                        <p>Role of language in teaching-learning across different subjects.</p>
+                    </div>
+                    <div class="course-item">
+                        <h4>Understanding Disciplines and Subjects</h4>
+                        <p class="course-code">Course Code: EDU-104</p>
+                        <p class="credits">Credits: 4</p>
+                        <p>Nature of knowledge and disciplines, curriculum organization.</p>
+                    </div>
+                    <div class="course-item">
+                        <h4>Pedagogy of School Subject - I</h4>
+                        <p class="course-code">Course Code: EDU-105</p>
+                        <p class="credits">Credits: 6</p>
+                        <p>Methods of teaching chosen subject (Science/Math/English/Social Studies).</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Semester 2 -->
+            <div class="semester">
+                <h3>Semester II</h3>
+                <div class="course-list">
+                    <div class="course-item">
+                        <h4>Learning and Teaching</h4>
+                        <p class="course-code">Course Code: EDU-201</p>
+                        <p class="credits">Credits: 4</p>
+                        <p>Theories of learning, teaching strategies, and classroom management.</p>
+                    </div>
+                    <div class="course-item">
+                        <h4>Assessment for Learning</h4>
+                        <p class="course-code">Course Code: EDU-202</p>
+                        <p class="credits">Credits: 4</p>
+                        <p>Principles of assessment, evaluation techniques, and CCE.</p>
+                    </div>
+                    <div class="course-item">
+                        <h4>Creating an Inclusive School</h4>
+                        <p class="course-code">Course Code: EDU-203</p>
+                        <p class="credits">Credits: 4</p>
+                        <p>Special needs education, inclusive practices, and diversity.</p>
+                    </div>
+                    <div class="course-item">
+                        <h4>Pedagogy of School Subject - II</h4>
+                        <p class="course-code">Course Code: EDU-204</p>
+                        <p class="credits">Credits: 6</p>
+                        <p>Advanced methods of teaching second chosen subject.</p>
+                    </div>
+                    <div class="course-item">
+                        <h4>School Internship - Phase 1</h4>
+                        <p class="course-code">Course Code: EDU-205</p>
+                        <p class="credits">Credits: 6</p>
+                        <p>Practical teaching experience in schools (4 weeks).</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Semester 3 -->
+            <div class="semester">
+                <h3>Semester III</h3>
+                <div class="course-list">
+                    <div class="course-item">
+                        <h4>Knowledge and Curriculum</h4>
+                        <p class="course-code">Course Code: EDU-301</p>
+                        <p class="credits">Credits: 4</p>
+                        <p>Curriculum development, theories, and planning.</p>
+                    </div>
+                    <div class="course-item">
+                        <h4>Gender, School and Society</h4>
+                        <p class="course-code">Course Code: EDU-302</p>
+                        <p class="credits">Credits: 4</p>
+                        <p>Gender issues in education and society.</p>
+                    </div>
+                    <div class="course-item">
+                        <h4>ICT in Teaching-Learning</h4>
+                        <p class="course-code">Course Code: EDU-303</p>
+                        <p class="credits">Credits: 4</p>
+                        <p>Technology integration in classroom teaching.</p>
+                    </div>
+                    <div class="course-item">
+                        <h4>Elective Course - I</h4>
+                        <p class="course-code">Course Code: EDU-304</p>
+                        <p class="credits">Credits: 4</p>
+                        <p>Choose from: Environmental Education/Peace Education/Value Education</p>
+                    </div>
+                    <div class="course-item">
+                        <h4>School Internship - Phase 2</h4>
+                        <p class="course-code">Course Code: EDU-305</p>
+                        <p class="credits">Credits: 8</p>
+                        <p>Extended teaching practice in schools (8 weeks).</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Semester 4 -->
+            <div class="semester">
+                <h3>Semester IV</h3>
+                <div class="course-list">
+                    <div class="course-item">
+                        <h4>Critical Understanding of ICT</h4>
+                        <p class="course-code">Course Code: EDU-401</p>
+                        <p class="credits">Credits: 4</p>
+                        <p>Critical perspectives on technology in education.</p>
+                    </div>
+                    <div class="course-item">
+                        <h4>Understanding the Self</h4>
+                        <p class="course-code">Course Code: EDU-402</p>
+                        <p class="credits">Credits: 4</p>
+                        <p>Teacher identity, professional ethics, and self-reflection.</p>
+                    </div>
+                    <div class="course-item">
+                        <h4>Guidance and Counselling</h4>
+                        <p class="course-code">Course Code: EDU-403</p>
+                        <p class="credits">Credits: 4</p>
+                        <p>Student counseling techniques and guidance services.</p>
+                    </div>
+                    <div class="course-item">
+                        <h4>Elective Course - II</h4>
+                        <p class="course-code">Course Code: EDU-404</p>
+                        <p class="credits">Credits: 4</p>
+                        <p>Choose from: Action Research/Health Education/Yoga Education</p>
+                    </div>
+                    <div class="course-item">
+                        <h4>Research Project & Dissertation</h4>
+                        <p class="course-code">Course Code: EDU-405</p>
+                        <p class="credits">Credits: 8</p>
+                        <p>Independent research project on educational topic.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Eligibility & Admission -->
+        <div class="admission-section">
+            <div class="admission-card">
+                <h2>Eligibility Criteria</h2>
+                <ul>
+                    <li>Bachelor's Degree (B.A./B.Sc./B.Com) with minimum 50% marks</li>
+                    <li>45% marks for SC/ST/OBC/PWD candidates</li>
+                    <li>Graduation in any discipline from a recognized university</li>
+                    <li>For science & mathematics teaching: Relevant subject in graduation</li>
+                    <li>Candidates appearing in final year can also apply</li>
+                </ul>
+            </div>
+
+            <div class="admission-card">
+                <h2>Admission Process</h2>
+                <ul>
+                    <li>Fill online application form</li>
+                    <li>Appear for entrance examination (if applicable)</li>
+                    <li>Participate in counseling process</li>
+                    <li>Document verification</li>
+                    <li>Fee payment and admission confirmation</li>
+                    <li>Seat allotment based on merit</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Career Prospects -->
+        <div class="career-section">
+            <h2>Career Opportunities</h2>
+            <div class="career-grid">
+                <div class="career-card">
+                    <h3>🏫 School Teacher</h3>
+                    <p>Secondary & Senior Secondary Schools</p>
+                </div>
+                <div class="career-card">
+                    <h3>📖 Educational Consultant</h3>
+                    <p>Curriculum Design & Development</p>
+                </div>
+                <div class="career-card">
+                    <h3>💼 Education Administrator</h3>
+                    <p>School Management & Leadership</p>
+                </div>
+                <div class="career-card">
+                    <h3>📚 Content Developer</h3>
+                    <p>Educational Materials & E-Learning</p>
+                </div>
+                <div class="career-card">
+                    <h3>🎓 Academic Coordinator</h3>
+                    <p>Educational Institutions</p>
+                </div>
+                <div class="career-card">
+                    <h3>🔬 Educational Researcher</h3>
+                    <p>Research Organizations & Universities</p>
+                </div>
+                <div class="career-card">
+                    <h3>👨‍🏫 Private Tutor</h3>
+                    <p>Coaching Centers & Home Tuition</p>
+                </div>
+                <div class="career-card">
+                    <h3>🌐 Online Educator</h3>
+                    <p>E-Learning Platforms & EdTech</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
